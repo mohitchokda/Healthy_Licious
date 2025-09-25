@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Licious - Freshly Baked Millet Goodness</title>
+    <style>
+        body {
+            font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f7ede2 url('https://www.transparenttextures.com/patterns/cream-dust.png');
+            color: #5c4037;
+        }
+        header {
+            position: relative;
+            background: linear-gradient(120deg, #f3d9b1 0%, #f7c873 100%);
+            color: #7c4a03;
+            padding: 2.5rem 1rem 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(124,74,3,0.07);
+            border-bottom: 4px dotted #e2b07a;
+            overflow: hidden;
+        }
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.7rem;
+            letter-spacing: 2.5px;
+            font-family: 'Pacifico', cursive, sans-serif;
+            color: #a05a2c;
+            text-shadow: 0 2px 8px #f7c87344;
+        }
+        header p {
+            font-size: 1.25rem;
+            margin: 0 0 1.2rem 0;
+            color: #7c4a03;
+        }
+        .cta {
+            background: #fff6e6;
+            color: #a05a2c;
+            border: 2px solid #e2b07a;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(160,90,44,0.07);
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .cta:hover {
+            background: #f7c873;
+            color: #fff;
+            border: 2px solid #a05a2c;
+        }
+        .menu-section {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 1.5rem 1rem;
+            background: #fff8f0bb;
+            border-radius: 24px;
+            box-shadow: 0 2px 18px rgba(160,90,44,0.06);
+            border: 2px dashed #f3d9b1;
+        }
+        .menu-title {
+            text-align: center;
+            font-size: 2.1rem;
+            margin-bottom: 1.7rem;
+            color: #a05a2c;
+            font-family: 'Pacifico', cursive, sans-serif;
+            letter-spacing: 1.5px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.2rem;
+        }
+        .menu-item {
+            background: #fff6e6;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(160,90,44,0.08);
+            padding: 1.7rem 1rem 1.2rem 1rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1.5px solid #f3d9b1;
+            position: relative;
+        }
+        .menu-item:hover {
+            transform: translateY(-7px) scale(1.035);
+            box-shadow: 0 6px 24px #f7c87355;
+        }
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.1rem;
+            border: 2.5px solid #e2b07a;
+            background: #f3d9b1;
+            box-shadow: 0 2px 8px #f7c87333;
+        }
+        .menu-item h3 {
+            margin: 0.5rem 0 0.3rem 0;
+            color: #a05a2c;
+            font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif;
+            font-size: 1.18rem;
+            letter-spacing: 0.5px;
+        }
+        .menu-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            font-size: 1.01rem;
+            color: #7c4a03;
+        }
+        .badges {
+            margin-top: 0.7rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #f3d9b1;
+            color: #a05a2c;
+            border-radius: 12px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.85rem;
+            margin: 0 0.2rem 0.2rem 0;
+        }
+        .quote-section {
+            background: #f7c87333;
+            margin: 2.5rem auto 1.7rem auto;
+            max-width: 700px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px #f3d9b144;
+            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+            border: 1.5px dashed #e2b07a;
+        }
+        .quote-section h2 {
+            color: #a05a2c;
+            margin-bottom: 1rem;
+            font-family: 'Pacifico', cursive, sans-serif;
+        }
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #7c4a03;
+            margin-bottom: 1rem;
+        }
+        .more-quotes {
+            color: #a05a2c;
+            text-decoration: underline;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        footer {
+            background: none;
+            text-align: center;
+            color: #a05a2c;
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            font-family: 'Quicksand', 'Segoe UI', Arial, sans-serif;
+        }
+        footer .footer-bg {
+            display: none;
+        }
+        footer .footer-content {
+            position: static;
+            z-index: auto;
+        }
+        /* Modal for zoom */
+        .modal-bg {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(160,90,44,0.75);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-bg.active {
+            display: flex;
+        }
+        .modal-img {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 50%;
+            box-shadow: 0 8px 40px #f7c87355, 0 2px 12px #a05a2c33;
+            background: #fff6e6;
+            border: 12px solid #fff6e6;
+            animation: zoomIn 0.3s;
+            padding: 0;
+            object-fit: cover;
+            display: block;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2.5rem;
+            color: #fff6e6;
+            cursor: pointer;
+            z-index: 1001;
+            font-weight: bold;
+            text-shadow: 0 2px 8px #a05a2c;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .menu-title { font-size: 1.2rem; }
+            .menu-item { padding: 1rem 0.5rem; }
+        }
+    </style>
+    <!-- Google Fonts for bakery style -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <img src="media/logo.png" alt="Healthylicious Logo" id="mainLogo" style="width:160px; height:160px; border-radius:50%; box-shadow:0 4px 24px rgba(86,171,47,0.12), 0 1.5px 8px rgba(191,161,0,0.10); margin-bottom:1.2rem; background:#fff; object-fit:cover; border:4px solid #fffbe7; cursor:zoom-in; transition:box-shadow 0.2s;" title="Click to zoom">
+        </div>
+        <h1>Healthy Licious</h1>
+        <p>Freshly Baked Goodness with Millets – 100% Sugar Free, No Maida, No Preservatives, Eggless!</p>
+        <button class="cta" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Explore Our Menu</button>
+    </header>
+    <section class="menu-section" id="menu">
+        <div class="menu-title">The Cookie Zoo</div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/DarkChocolateChunks.jpg" alt="Chip Chip Hooray" class="zoomable-food">
+                <h3>CHIP CHIP HOORAY</h3>
+                <ul><li>Classic! Soft & Chewy With Dark Chocolate Chunks</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/WheatCookie.jpg" alt="Brown Bee" class="zoomable-food">
+                <h3>BROWN BEE</h3>
+                <ul><li>The Traditional Whole Wheat Flour Cookies</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/RedHeartCookie.png" alt="Red Heart Cookie" class="zoomable-food">
+                <h3>RED HEART COOKIE</h3>
+                <ul><li>Unique Recipe That Captures The True Red Velvet Flavour</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/CoconutCookie.jpg" alt="The Co Co Twist" class="zoomable-food">
+                <h3>THE CO CO TWIST</h3>
+                <ul><li>Packed With Lots Of Flaked Coconut For A Delicious Treat</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/RoseCookies.jpg" alt="Gulaboo" class="zoomable-food">
+                <h3>GULABOO</h3>
+                <ul><li>Explore The True Flavour Of These Appealing Rose Cookies</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/JamCookie.jpg" alt="Jam Blast" class="zoomable-food">
+                <h3>JAM BLAST</h3>
+                <ul><li>Take yourself back to your childhood with Jam filled Cookie</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/TheCheeseBites.png" alt="The Cheese Bites" class="zoomable-food">
+                <h3>THE CHEESE BITES</h3>
+                <ul><li>Munchies Which Are Cheesy & Buttery With Little Kick Of Spices</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/Nankhatai.jpg" alt="Dadi's Classic Nankhatai" class="zoomable-food">
+                <h3>DADI'S CLASSIC NANKHATAI</h3>
+                <ul><li>Melt In Mouth Biscuits With Rich Aroma Of Ghee Tinged With cardamom & Pistachio</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/CranberryOatmealCookies.jpg" alt="The Oatstanding Berries" class="zoomable-food">
+                <h3>THE OATSTANDING BERRIES</h3>
+                <ul><li>Oatmeal Cookies Perfectly Flavoured With Tanginess Of Cranberries</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/TheCookieZoo/HeavenlyDark.jpg" alt="Heavenly Dark" class="zoomable-food">
+                <h3>HEAVENLY DARK</h3>
+                <ul><li>Dark chocolate at its very best, this cookie is the real deal</li></ul>
+            </div>
+        </div>
+        <div class="menu-title" style="margin-top:2.5rem;">Brownies N' More Brownies</div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="media/Brownies/WalnutBrownie.jpg" alt="Fudgy Walnut Brownie" class="zoomable-food">
+                <h3>Fudgy Walnut Brownie</h3>
+                <ul><li>Rich, fudgy, and loaded with walnuts</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/RagiBrownie.jpg" alt="Ragilicious Brownie" class="zoomable-food">
+                <h3>Ragilicious Brownie</h3>
+                <ul><li>Finger millet brownie, healthy and delicious</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/OatBrownie.jpg" alt="Oat Of This World Brownie" class="zoomable-food">
+                <h3>Oat Of This World Brownie</h3>
+                <ul><li>Oat-based brownie for a wholesome treat</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/OreoBrownie.jpg" alt="Oreo Brownie" class="zoomable-food">
+                <h3>Oreo Brownie</h3>
+                <ul><li>Classic brownie with Oreo crunch</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/DiabeticBrownie.jpg" alt="Diabetic Friendly Brownie" class="zoomable-food">
+                <h3>Diabetic Friendly Brownie</h3>
+                <ul><li>Sweetened with natural alternatives, perfect for diabetics</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/PeanutButterBrownie.jpg" alt="Healthylicious Peanut Butter Delight Brownie" class="zoomable-food">
+                <h3>Peanut Butter Delight Brownie</h3>
+                <ul><li>Peanut butter swirls for a nutty twist</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/EspressoBrownie.jpg" alt="Espresso Yourself Brownie" class="zoomable-food">
+                <h3>Espresso Yourself Brownie</h3>
+                <ul><li>Infused with coffee for a bold flavor</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/TheClassicBrownie.jpg" alt="The Classic Brownie" class="zoomable-food">
+                <h3>The Classic Brownie</h3>
+                <ul><li>Timeless, rich chocolate brownie</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/ChocolateMadnessBrownie.jpg" alt="Chocolate Madness Brownie" class="zoomable-food">
+                <h3>Chocolate Madness Brownie</h3>
+                <ul><li>For the ultimate chocolate lover</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/RedVelvetBrownie.jpg" alt="Old School Red Velvet Brownie" class="zoomable-food">
+                <h3>Old School Red Velvet Brownie</h3>
+                <ul><li>Classic red velvet flavor in a brownie</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Brownies/NuttyBrownie.jpg" alt="Nutty Brownie" class="zoomable-food">
+                <h3>Nutty Brownie</h3>
+                <ul><li>Loaded with assorted nuts for crunch</li></ul>
+            </div>
+        </div>
+        <div class="menu-title" style="margin-top:2.5rem;">Tea Time Sugarfree Cakes</div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="media/Cakes/AlmondAmazeCake.jpg" alt="Almond Amaze Cake" class="zoomable-food">
+                <h3>Almond Amaze Cake</h3>
+                <ul><li>Rich almond flavor, soft and moist</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/CoffeeWalnutCake.jpg" alt="Coffee Walnut Cake" class="zoomable-food">
+                <h3>Coffee Walnut Cake</h3>
+                <ul><li>Perfect blend of coffee and crunchy walnuts</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/NuttyFruityCake.png" alt="Nutty Fruity Cake" class="zoomable-food">
+                <h3>Nutty Fruity Cake</h3>
+                <ul><li>Loaded with nuts and dried fruits</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/ChristmasPlumCake.JPG" alt="Christmas Plum Cake" class="zoomable-food">
+                <h3>Christmas Plum Cake</h3>
+                <ul><li>Festive, rich, and full of flavor</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/PineappleCreamCheeseCake.png" alt="Pineapple Cream Cheese Cake" class="zoomable-food">
+                <h3>Pineapple Cream Cheese Cake</h3>
+                <ul><li>Refreshing pineapple with creamy cheese</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/ExoticMangoCake.png" alt="Exotic Mango Cake" class="zoomable-food">
+                <h3>Exotic Mango Cake</h3>
+                <ul><li>Made with real mangoes for a tropical treat</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/ExoticChocolateChunksCake.jpg" alt="Exotic Chocolate Chunks Cake" class="zoomable-food">
+                <h3>Exotic Chocolate Chunks Cake</h3>
+                <ul><li>Chocolate cake with generous chocolate chunks</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/CarrotDatesandNutsCake.jpg" alt="Carrot Dates & Nuts Cake" class="zoomable-food">
+                <h3>Carrot Dates & Nuts Cake</h3>
+                <ul><li>Wholesome cake with carrot, dates, and nuts</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/RosePistachioGlazeCake.jpg" alt="Rose Pistachio Glaze Cake" class="zoomable-food">
+                <h3>Rose Pistachio Glaze Cake</h3>
+                <ul><li>Delicate rose flavor with pistachio glaze</li></ul>
+            </div>
+            <div class="menu-item">
+                <img src="media/Cakes/MasalaChaiCake.jpg" alt="Tea Time Chai Masala Cake" class="zoomable-food">
+                <h3>Tea Time Chai Masala Cake</h3>
+                <ul><li>Infused with aromatic chai spices</li></ul>
+            </div>
+        </div>
+    </section>
+    <section class="quote-section">
+        <h2>Daily Quote</h2>
+        <div class="quote">“Let food be thy medicine and medicine be thy food.” – Hippocrates</div>
+        <a class="more-quotes" href="#" onclick="alert('More quotes coming soon!')">See more quotes</a>
+    </section>
+    <div style="text-align:center; margin-bottom:2rem;">
+        <a href="https://www.instagram.com/_.healthylicious._?igsh=MW1jdG54MHJ3MGNpdQ==" target="_blank" style="display:inline-block; text-decoration:none;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width:36px; height:36px; vertical-align:middle; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.08); margin-right:8px;">
+            <span style="color:#bfa100; font-size:1.1rem; vertical-align:middle;">Follow us on Instagram</span>
+        </a>
+    </div>
+    <footer style="text-align:center; color:#bfa100; font-size:1rem; opacity:0.7; margin-bottom:1.2rem; letter-spacing:1px;">
+    &copy; By Aarthi Attal
+    </footer>
+    </footer>
+    <!-- Logo Zoom Modal -->
+    <!-- Universal Image Zoom Modal -->
+    <div class="modal-bg" id="imgModal" onclick="closeImgModal(event)">
+        <span class="modal-close" onclick="closeImgModal(event)">&times;</span>
+        <img src="" alt="Zoomed Image" class="modal-img" id="modalImg">
+    </div>
+    <script>
+        // Logo zoom
+        const mainLogo = document.getElementById('mainLogo');
+        mainLogo.addEventListener('click', function() {
+            openImgModal('media/logo.png');
+        });
+        // Food image zoom
+        document.querySelectorAll('.zoomable-food').forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function(e) {
+                openImgModal(img.src);
+            });
+        });
+        // Modal logic
+        const imgModal = document.getElementById('imgModal');
+        const modalImg = document.getElementById('modalImg');
+        function openImgModal(src) {
+            modalImg.src = src;
+            modalImg.style.borderRadius = '30px';
+            modalImg.style.background = '#fff6e6';
+            modalImg.style.border = '6px solid #f3d9b1';
+            imgModal.classList.add('active');
+        }
+        function closeImgModal(e) {
+            if (e.target === imgModal || e.target.classList.contains('modal-close')) {
+                imgModal.classList.remove('active');
+                modalImg.src = '';
+            }
+        }
+    </script>
+    </footer>
+</body>
+</html>
