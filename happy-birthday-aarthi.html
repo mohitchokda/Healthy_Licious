@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aarthi Attal!</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #ffe0f7 0%, #fffbe7 100%);
+            font-family: 'Pacifico', cursive, 'Quicksand', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #e75480;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 12px #f7c87388, 0 1px 0 #fff;
+            letter-spacing: 2px;
+            animation: popIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+        }
+        h2 {
+            color: #a05a2c;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s 0.5s both;
+        }
+        .party-popper {
+            width: 60px;
+            height: 60px;
+            margin: 0 1rem;
+            animation: popper-bounce 1.5s infinite alternate;
+        }
+        @keyframes popper-bounce {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(-18px) rotate(10deg); }
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.7); opacity: 0; }
+            80% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .wish-btn {
+            background: linear-gradient(90deg, #f7c873 0%, #e75480 100%);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 1rem 2.5rem;
+            font-size: 1.3rem;
+            font-family: 'Quicksand', Arial, sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 2rem 0 1.5rem 0;
+            box-shadow: 0 2px 12px #e7548088;
+            transition: background 0.2s, transform 0.2s;
+            animation: popIn 1.5s 0.5s both;
+        }
+        .wish-btn:hover {
+            background: linear-gradient(90deg, #e75480 0%, #f7c873 100%);
+            transform: scale(1.08) rotate(-2deg);
+        }
+        .hidden-photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s;
+        }
+        .hidden-photos.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px #e7548033, 0 2px 8px #f7c87355;
+            object-fit: cover;
+            border: 5px solid #fffbe7;
+            background: #fffbe7;
+            cursor: pointer;
+            transform: scale(0.95);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: fadeIn 1.2s both;
+        }
+        .photo:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 8px 32px #e75480aa, 0 2px 8px #f7c87399;
+        }
+        .confetti {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .message {
+            font-size: 1.2rem;
+            color: #a05a2c;
+            margin-top: 1.5rem;
+            font-family: 'Quicksand', Arial, sans-serif;
+            animation: fadeIn 2s 1.2s both;
+        }
+        .cake-container { display: flex; justify-content: center; }
+        .cake { position: relative; width: 120px; height: 140px; }
+        .plate { width: 120px; height: 20px; background: #f7c873; border-radius: 50%; position: absolute; bottom: 0; left: 0; box-shadow: 0 2px 8px #e7548033; }
+        .cake-body { width: 90px; height: 60px; background: #fffbe7; border-radius: 20px 20px 30px 30px/30px 30px 40px 40px; position: absolute; bottom: 20px; left: 15px; box-shadow: 0 4px 16px #e7548033; }
+        .icing { width: 90px; height: 30px; background: #e75480; border-radius: 50% 50% 40% 40%/60% 60% 40% 40%; position: absolute; bottom: 60px; left: 15px; }
+        .candle { width: 10px; height: 30px; background: #f7c873; border-radius: 5px; position: absolute; left: 55px; bottom: 90px; }
+        .flame { width: 12px; height: 18px; background: radial-gradient(ellipse at center, #fffbe7 60%, #f7c873 100%); border-radius: 50% 50% 50% 50%/60% 60% 100% 100%; position: absolute; left: -1px; top: -16px; animation: flame-flicker 0.5s infinite alternate; }
+        @keyframes flame-flicker { 0% { transform: scaleY(1) scaleX(1); } 100% { transform: scaleY(1.2) scaleX(0.9); } }
+        .flip-card {
+            background: none;
+            width: 220px;
+            height: 220px;
+            perspective: 1000px;
+            display: inline-block;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flip-card-front {
+            background: #fffbe7;
+            color: #e75480;
+            font-family: 'Pacifico', cursive, 'Quicksand', Arial, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            box-shadow: 0 4px 24px #e7548033, 0 2px 8px #f7c87355;
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .flip-card-back {
+            background: #fffbe7;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flip-card-back img.photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            border: 4px solid #f7c873;
+            object-fit: cover;
+            box-shadow: 0 4px 24px #e7548033, 0 2px 8px #f7c87355;
+        }
+        /* Hide confetti and party poppers by default */
+        .confetti, #mainHeader, #mainWish { display: none; }
+        .show-surprise .confetti, .show-surprise #mainHeader, .show-surprise #mainWish { display: block !important; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas class="confetti"></canvas>
+    <div class="center">
+        <div id="mainHeader" style="display:none;align-items:center;justify-content:center;">
+            <h1>Happy Birthday Aarthi!</h1>
+        </div>
+        <h2 id="mainWish" style="display:none;">Wishing you a day filled with love, laughter, and sweet surprises!</h2>
+        <button class="wish-btn" id="unlockBtn" onclick="unlockPhoto()">Click for a Surprise 🎁</button>
+        <div class="hidden-photos" id="photos">
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">You light up every room! MY Laal Pari 💡</div>
+                    <div class="flip-card-back"><img src="media/logo1.jpg" class="photo" alt="Aarthi 1"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">Your smile is the sweetest! My Dear Giddu 😊</div>
+                    <div class="flip-card-back"><img src="media/Aaru/giddu.jpg" class="photo" alt="Aarthi 2"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">You make life delicious! 🍰 My Dear Pyaari Laaal</div>
+                    <div class="flip-card-back"><img src="media/logo.png" class="photo" alt="Aarthi 3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="cake-container" id="cakeContainer" style="display:none; margin-top:2rem;">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="cake-body"></div>
+                <div class="icing"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+        </div>
+        <div class="message" id="msg" style="display:none;">You are the heart and soul of Healthy Licious! Have a magical year ahead! 🎂💖</div>
+        <audio id="bdayAudio" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
+    </div>
+    <script>
+        // Confetti animation
+        const canvas = document.querySelector('.confetti');
+        const ctx = canvas.getContext('2d');
+        let W = window.innerWidth, H = window.innerHeight;
+        canvas.width = W; canvas.height = H;
+        let mp = 120; // max particles
+        let particles = [];
+        for(let i = 0; i < mp; i++) {
+            particles.push({
+                x: Math.random()*W,
+                y: Math.random()*H,
+                r: Math.random()*8+2,
+                d: Math.random()*mp,
+                color: `hsl(${Math.random()*360},80%,70%)`,
+                tilt: Math.floor(Math.random()*10)-10
+            });
+        }
+        function draw() {
+            if (!document.body.classList.contains('show-surprise')) return;
+            ctx.clearRect(0,0,W,H);
+            for(let i = 0; i < mp; i++) {
+                let p = particles[i];
+                ctx.beginPath();
+                ctx.lineWidth = p.r;
+                ctx.strokeStyle = p.color;
+                ctx.moveTo(p.x + p.tilt + p.r/3, p.y);
+                ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r/3);
+                ctx.stroke();
+            }
+            update();
+        }
+        let angle = 0;
+        function update() {
+            angle += 0.01;
+            for(let i = 0; i < mp; i++) {
+                let p = particles[i];
+                p.y += (Math.cos(angle+p.d) + 1 + p.r/2)/2;
+                p.x += Math.sin(angle);
+                if(p.x > W+20 || p.x < -20 || p.y > H) {
+                    if(i%3 > 0) {
+                        particles[i] = {x: Math.random()*W, y: -10, r: p.r, d: p.d, color: p.color, tilt: p.tilt};
+                    } else {
+                        if(Math.sin(angle) > 0) {
+                            particles[i] = {x: -5, y: Math.random()*H, r: p.r, d: p.d, color: p.color, tilt: p.tilt};
+                        } else {
+                            particles[i] = {x: W+5, y: Math.random()*H, r: p.r, d: p.d, color: p.color, tilt: p.tilt};
+                        }
+                    }
+                }
+            }
+        }
+        setInterval(draw, 20);
+        window.addEventListener('resize', () => {
+            W = window.innerWidth; H = window.innerHeight;
+            canvas.width = W; canvas.height = H;
+        });
+        // Flippable photo logic
+        const cardEls = document.querySelectorAll('#photos .flip-card');
+        let currentPhoto = 0;
+        let unlocked = false;
+        function unlockPhoto() {
+            document.getElementById('photos').classList.add('visible');
+            if (currentPhoto < cardEls.length) {
+                cardEls[currentPhoto].style.display = 'inline-block';
+                // Remove any previous flip state
+                cardEls[currentPhoto].classList.remove('flipped');
+                // Only flip on click
+                cardEls[currentPhoto].onclick = function() {
+                    this.classList.toggle('flipped');
+                };
+                currentPhoto++;
+                if (currentPhoto === cardEls.length) {
+                    document.getElementById('unlockBtn').textContent = 'Final Surprise! 🎂';
+                }
+            } else if (!unlocked) {
+                unlocked = true;
+                document.getElementById('unlockBtn').style.display = 'none';
+                document.getElementById('msg').style.display = 'block';
+                document.getElementById('cakeContainer').style.display = 'block';
+                document.body.classList.add('show-surprise');
+                document.getElementById('bdayAudio').play();
+                // Extra confetti burst
+                for(let i=0;i<30;i++) {
+                    setTimeout(() => { angle += 0.2; }, i*30);
+                }
+            }
+        }
+        // Show party poppers, wish, confetti only after all photos are unlocked
+        document.body.classList.remove('show-surprise');
+    </script>
+</body>
+</html>
