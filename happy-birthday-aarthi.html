@@ -18,6 +18,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            width: 100vw;
         }
         h1 {
             font-size: 3rem;
@@ -75,8 +76,10 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
+            align-items: center;
+            gap: 2.2rem 2.2rem; /* row-gap column-gap */
             margin-top: 2rem;
+            width: 100vw;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.7s;
@@ -128,7 +131,11 @@
             width: 220px;
             height: 220px;
             perspective: 1000px;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2.2rem auto;
+            border-radius: 24px;
         }
         .flip-card-inner {
             position: relative;
@@ -138,6 +145,7 @@
             transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
             transform-style: preserve-3d;
             cursor: pointer;
+            border-radius: 24px;
         }
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
@@ -170,8 +178,8 @@
             justify-content: center;
         }
         .flip-card-back img.photo {
-            width: 200px;
-            height: 200px;
+            width: 90%;
+            height: 90%;
             border-radius: 20px;
             border: 4px solid #f7c873;
             object-fit: cover;
@@ -180,6 +188,142 @@
         /* Hide confetti and party poppers by default */
         .confetti, #mainHeader, #mainWish { display: none; }
         .show-surprise .confetti, .show-surprise #mainHeader, .show-surprise #mainWish { display: block !important; }
+        @media (max-width: 600px) {
+            .center {
+                padding: 1rem 0.2rem;
+            }
+            .hidden-photos {
+                gap: 1.1rem 1.1rem;
+                margin-top: 1rem;
+            }
+            .flip-card {
+                width: 90vw;
+                max-width: 320px;
+                height: 90vw;
+                max-height: 320px;
+                min-width: 160px;
+                min-height: 160px;
+                border-radius: 18px;
+                margin-bottom: 1.3rem;
+            }
+            .flip-card-inner {
+                border-radius: 18px;
+            }
+            .flip-card-front, .flip-card-back {
+                font-size: 1rem;
+                padding: 0.7rem;
+                border-radius: 18px;
+            }
+            .flip-card-back img.photo {
+                width: 92%;
+                height: 92%;
+                border-radius: 14px;
+            }
+            .cake-container {
+                margin-top: 1rem !important;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+        }
+        .card-title {
+            font-family: 'Pacifico', cursive, 'Quicksand', Arial, sans-serif;
+            font-size: 1.5rem;
+            color: #e75480;
+            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 6px #f7c87355, 0 1px 0 #fff;
+        }
+                .extra-pics {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 1.2rem 0 1.2rem 0;
+        }
+        .extra-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 3px solid #e75480;
+            box-shadow: 0 2px 12px #e7548033, 0 1px 4px #f7c87355;
+            background: #fffbe7;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .extra-pic:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 6px 24px #e75480aa, 0 2px 8px #f7c87399;
+        }
+        .hearts-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 2.1rem;
+            margin: 0.2rem 0 0.2rem 0;
+            animation: fadeIn 1.2s both;
+        }
+        .heart {
+            animation: heartBeat 1.2s infinite alternate;
+        }
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.18) rotate(-8deg); }
+        }
+        @media (max-width: 600px) {
+            .extra-pics {
+                gap: 0.5rem;
+            }
+            .extra-pic {
+                width: 80px;
+                height: 80px;
+                border-radius: 10px;
+            }
+            .hearts-row {
+                font-size: 1.3rem;
+            }
+        }
+                .zoom-modal {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+        .zoom-modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px #e75480cc;
+            background: #fffbe7;
+            border: 4px solid #e75480;
+            animation: popIn 0.5s;
+        }
+        .close-modal {
+            position: absolute;
+            top: 18px;
+            right: 38px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10002;
+            text-shadow: 0 2px 8px #e75480cc;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -194,20 +338,92 @@
         <div class="hidden-photos" id="photos">
             <div class="flip-card" style="display:none;">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front">You light up every room! MY Laal Pari 💡</div>
-                    <div class="flip-card-back"><img src="media/logo1.jpg" class="photo" alt="Aarthi 1"></div>
+                    <div class="flip-card-front">
+                        <div class="card-title">My Whole World 🌎</div>
+                        <div class="sweet-line-oncard">You are the reason my world is so beautiful. Thank you for being my everything!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/GoToPerson.jpg" class="photo" alt="Aarthi 1"></div>
                 </div>
             </div>
             <div class="flip-card" style="display:none;">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front">Your smile is the sweetest! My Dear Giddu 😊</div>
-                    <div class="flip-card-back"><img src="media/Aaru/giddu.jpg" class="photo" alt="Aarthi 2"></div>
+                    <div class="flip-card-front">
+                        <div>My Geludii</div>
+                        <div class="sweet-line-oncard">With you, every moment is a sweet adventure. My Geludii, you light up my life!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/Geludi.jpg" class="photo" alt="Aarthi 2"></div>
                 </div>
             </div>
             <div class="flip-card" style="display:none;">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front">You make life delicious! 🍰 My Dear Pyaari Laaal</div>
-                    <div class="flip-card-back"><img src="media/logo.png" class="photo" alt="Aarthi 3"></div>
+                    <div class="flip-card-front">
+                        <div>My Calmness</div>
+                        <div class="sweet-line-oncard">You are my peace in the chaos, my calm in every storm. Love you endlessly!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/peace.jpg" class="photo" alt="Aarthi 3"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>My Pyaari Laal</div>
+                        <div class="sweet-line-oncard">You are the best sweetner I can ever have</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/giddu.jpg" class="photo" alt="Aarthi 4"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>My Huggudi</div>
+                        <div class="sweet-line-oncard">Whenever I need a friend, a smile, or a hug, you are always there. My forever person!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/haggudi.jpg" class="photo" alt="Aarthi 4"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>My Cutudii</div>
+                        <div class="sweet-line-oncard">Your cuteness melts my heart every single day. You are my daily dose of joy and smiles!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/cutiePie.jpg" class="photo" alt="Aarthi 4"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>My Laal Pari</div>
+                        <div class="sweet-line-oncard">Whenever I need a smile or hug, you are always there!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/giddu.jpg" class="photo" alt="Aarthi 4"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>My Go To Person</div>
+                        <div class="sweet-line-oncard">Whenever I need a friend, a smile, or a hug, you are always there. My forever person!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/US1.jpg" class="photo" alt="Aarthi 4"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>My Sweetheart</div>
+                        <div class="sweet-line-oncard">My sweet princess, You are my fairytale come true!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/partner.jpg" class="photo" alt="Aarthi 5"></div>
+                </div>
+            </div>
+            <div class="flip-card" style="display:none;">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div>My Dear Aarruu</div>
+                        <div class="sweet-line-oncard">To my dearest Aarruu, you are my happiness, my love, my everything. Happy Birthday!</div>
+                    </div>
+                    <div class="flip-card-back"><img src="media/Aaru/BetterTogether.jpg" class="photo" alt="Aarthi 6"></div>
                 </div>
             </div>
         </div>
@@ -221,10 +437,50 @@
                 </div>
             </div>
         </div>
-        <div class="message" id="msg" style="display:none;">You are the heart and soul of Healthy Licious! Have a magical year ahead! 🎂💖</div>
-        <audio id="bdayAudio" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b2.mp3" preload="auto"></audio>
+        <div class="message" id="msg" style="display:none;">You are the best, LOVE YOU BHOUT SARA !! 🎂💖</div>
+        <div id="extraPicsContainer" style="display:none; flex-direction:column; align-items:center; margin-top:1.5rem;">
+            <div class="hearts-row">
+                <span class="heart">💖</span><span class="heart">💗</span><span class="heart">💞</span>
+            </div>
+            <div class="extra-pics">
+                <img src="media/Aaru/Us2.jpg" class="extra-pic zoomable-extra" alt="Extra 1">
+                <img src="media/Aaru/Us3.jpg" class="extra-pic zoomable-extra" alt="Extra 2">
+                <img src="media/Aaru/Us4.jpg" class="extra-pic zoomable-extra" alt="Extra 3">
+            </div>
+            <div class="hearts-row">
+                <span class="heart">💝</span><span class="heart">💓</span><span class="heart">💘</span>
+            </div>
+        </div>
+        <!-- Modal for zooming extra images -->
+        <div id="extraZoomModal" class="zoom-modal" style="display:none;">
+            <span class="close-modal" id="closeExtraZoom">&times;</span>
+            <img class="zoom-modal-content" id="extraZoomImg" src="" alt="Zoomed Extra">
+        </div>
+        <audio id="bdayAudio" src="" preload="auto"></audio>
     </div>
     <script>
+        // Zoomable extra images logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const extraZoomModal = document.getElementById('extraZoomModal');
+            const extraZoomImg = document.getElementById('extraZoomImg');
+            const closeExtraZoom = document.getElementById('closeExtraZoom');
+            document.querySelectorAll('.zoomable-extra').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    extraZoomImg.src = this.src;
+                    extraZoomModal.style.display = 'flex';
+                });
+            });
+            closeExtraZoom.onclick = function() {
+                extraZoomModal.style.display = 'none';
+                extraZoomImg.src = '';
+            };
+            extraZoomModal.onclick = function(e) {
+                if (e.target === extraZoomModal) {
+                    extraZoomModal.style.display = 'none';
+                    extraZoomImg.src = '';
+                }
+            };
+        });
         // Confetti animation
         const canvas = document.querySelector('.confetti');
         const ctx = canvas.getContext('2d');
@@ -281,15 +537,18 @@
             W = window.innerWidth; H = window.innerHeight;
             canvas.width = W; canvas.height = H;
         });
-        // Flippable photo logic
+        // Flippable photo logic (restored: reveal one card per click, then show final message)
         const cardEls = document.querySelectorAll('#photos .flip-card');
         let currentPhoto = 0;
         let unlocked = false;
         function unlockPhoto() {
             document.getElementById('photos').classList.add('visible');
             if (currentPhoto < cardEls.length) {
-                cardEls[currentPhoto].style.display = 'inline-block';
-                // Remove any previous flip state
+                // Hide all cards except those already revealed
+                for (let i = 0; i < cardEls.length; i++) {
+                    cardEls[i].style.display = (i <= currentPhoto) ? 'inline-block' : 'none';
+                }
+                // Remove any previous flip state for the new card
                 cardEls[currentPhoto].classList.remove('flipped');
                 // Only flip on click
                 cardEls[currentPhoto].onclick = function() {
@@ -301,6 +560,10 @@
                 }
             } else if (!unlocked) {
                 unlocked = true;
+                // Show all cards
+                for (let i = 0; i < cardEls.length; i++) {
+                    cardEls[i].style.display = 'inline-block';
+                }
                 document.getElementById('unlockBtn').style.display = 'none';
                 document.getElementById('msg').style.display = 'block';
                 document.getElementById('cakeContainer').style.display = 'block';
@@ -310,6 +573,8 @@
                 for(let i=0;i<30;i++) {
                     setTimeout(() => { angle += 0.2; }, i*30);
                 }
+                // Show extra pics and hearts
+                document.getElementById('extraPicsContainer').style.display = 'flex';
             }
         }
         // Show party poppers, wish, confetti only after all photos are unlocked
